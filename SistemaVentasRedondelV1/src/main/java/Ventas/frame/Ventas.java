@@ -4,12 +4,19 @@
  */
 package Ventas.frame;
 
+import functionExit.Exit;
+import Transitions.Transitions;
+import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+
 /**
  *
  * @author jarav
  */
 public class Ventas extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Ventas.class.getName());
 
     /**
@@ -17,6 +24,88 @@ public class Ventas extends javax.swing.JFrame {
      */
     public Ventas() {
         initComponents();
+
+        // Ocultar al inicio
+        lblCorreo.setVisible(false);
+        txtCorreo.setVisible(false);
+        lblTelefono2.setVisible(false);
+        txtTelefono2.setVisible(false);
+
+// Checkbox Correo
+        ckbCorreo.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                boolean visible = ckbCorreo.isSelected();
+                lblCorreo.setVisible(visible);
+                txtCorreo.setVisible(visible);
+            }
+        });
+
+// Checkbox Telefono2
+        ckbTelefono2.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                boolean visible = ckbTelefono2.isSelected();
+                lblTelefono2.setVisible(visible);
+                txtTelefono2.setVisible(visible);
+            }
+        });
+
+        // Ocultar el label al inicio
+        lblSumaTotal.setVisible(false);
+
+        // Configurar spinner: mínimo 0, máximo 1000, valor inicial 0, paso 1
+        SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 5000, 1);
+        spnTotal.setModel(model);
+
+        spnTotal.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int cantidad = (int) spnTotal.getValue();
+
+                if (cantidad > 0) {
+                    int total = cantidad * 15000;
+                    lblSumaTotal.setText("₡" + String.format("%,d", total).replace(",", "."));
+                    lblSumaTotal.setVisible(true);
+                } else {
+                    lblSumaTotal.setVisible(false);
+                }
+            }
+        });
+
+        cmbMetodoDePago.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                String metodo = cmbMetodoDePago.getSelectedItem().toString();
+
+                if (metodo.equals("Sinpe") || metodo.equals("Tarjeta")) {
+                    lblComprobante.setText("Comprobante:");
+                } else {
+                    lblComprobante.setText("Efectivo:");
+                }
+            }
+        });
+
+        txtComprobante.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                if (cmbMetodoDePago.getSelectedItem().toString().equals("Efectivo")) {
+                    String texto = txtComprobante.getText().replace(".", "").trim();
+
+                    if (!texto.isEmpty()) {
+                        try {
+                            int numero = Integer.parseInt(texto);
+                            String formateado = String.format("%,d", numero).replace(",", ".");
+                            txtComprobante.setText(formateado);
+                            txtComprobante.setCaretPosition(formateado.length()); // cursor al final
+                        } catch (NumberFormatException ex) {
+                            JOptionPane.showMessageDialog(null, "Solo se admiten numeros");
+                        }
+                    }
+                }
+            }
+        });
+
     }
 
     /**
@@ -30,30 +119,192 @@ public class Ventas extends javax.swing.JFrame {
 
         pnlPrincipal = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblIconoASADA = new javax.swing.JLabel();
         pnlBody = new javax.swing.JPanel();
+        pnlRealizarVenta = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblApellidos = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        lblCedula = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        lblCorreo = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        lblTotalEntradas = new javax.swing.JLabel();
+        spnTotal = new javax.swing.JSpinner();
+        lblTotal = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        lblTelefono2 = new javax.swing.JLabel();
+        txtTelefono2 = new javax.swing.JTextField();
+        ckbCorreo = new javax.swing.JCheckBox();
+        ckbTelefono2 = new javax.swing.JCheckBox();
+        btnConfirmar = new javax.swing.JButton();
+        pnlSumaTotal = new javax.swing.JPanel();
+        lblSumaTotal = new javax.swing.JLabel();
+        cmbMetodoDePago = new javax.swing.JComboBox<>();
+        lblMetodoPago = new javax.swing.JLabel();
+        lblComprobante = new javax.swing.JLabel();
+        txtComprobante = new javax.swing.JTextField();
+        mnbOpciones = new javax.swing.JMenuBar();
+        mnuOpciones = new javax.swing.JMenu();
+        mnuMenuPrincipal = new javax.swing.JMenuItem();
+        mnuVentasRealizadas = new javax.swing.JMenuItem();
+        mnuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Área de Ventas");
+
+        lblIconoASADA.setIcon(new javax.swing.ImageIcon("C:\\Users\\jarav\\OneDrive\\Documentos\\ProyectoRedondel\\SistemaVentasRedondelV1\\src\\main\\java\\ImagenesASADAS\\Logo ASADA.png")); // NOI18N
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
         pnlHeaderLayout.setHorizontalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addGap(383, 383, 383)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblIconoASADA)
+                .addContainerGap())
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHeaderLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblIconoASADA))
         );
+
+        pnlRealizarVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNombre.setText("Nombre");
+        pnlRealizarVenta.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+
+        txtNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 59, 200, -1));
+
+        lblApellidos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblApellidos.setText("Apellidos");
+        pnlRealizarVenta.add(lblApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+
+        txtApellidos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 59, 200, -1));
+
+        lblCedula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCedula.setText("Cedula");
+        pnlRealizarVenta.add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
+
+        txtCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 59, 200, -1));
+
+        lblCorreo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCorreo.setText("Correo");
+        pnlRealizarVenta.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+
+        txtCorreo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 250, -1));
+
+        lblTotalEntradas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTotalEntradas.setText("Total de Entradas");
+        pnlRealizarVenta.add(lblTotalEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        spnTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(spnTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 135, -1));
+
+        lblTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTotal.setText("Total:");
+        pnlRealizarVenta.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 50, 30));
+
+        lblTelefono.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTelefono.setText("Telefono");
+        pnlRealizarVenta.add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(746, 24, -1, -1));
+
+        txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 59, 215, -1));
+
+        lblTelefono2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTelefono2.setText("Telefono2");
+        pnlRealizarVenta.add(lblTelefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+
+        txtTelefono2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(txtTelefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 215, -1));
+
+        ckbCorreo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ckbCorreo.setText("Correo ");
+        pnlRealizarVenta.add(ckbCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+
+        ckbTelefono2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ckbTelefono2.setText("Telefono Secundario");
+        pnlRealizarVenta.add(ckbTelefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+
+        btnConfirmar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(this::btnConfirmarActionPerformed);
+        pnlRealizarVenta.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
+
+        pnlSumaTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblSumaTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSumaTotal.setAlignmentX(1.0F);
+        lblSumaTotal.setAlignmentY(1.0F);
+
+        javax.swing.GroupLayout pnlSumaTotalLayout = new javax.swing.GroupLayout(pnlSumaTotal);
+        pnlSumaTotal.setLayout(pnlSumaTotalLayout);
+        pnlSumaTotalLayout.setHorizontalGroup(
+            pnlSumaTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSumaTotalLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(lblSumaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        pnlSumaTotalLayout.setVerticalGroup(
+            pnlSumaTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSumaTotalLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(lblSumaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        pnlRealizarVenta.add(pnlSumaTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 200, 50));
+
+        cmbMetodoDePago.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Sinpe", "Tarjeta" }));
+        pnlRealizarVenta.add(cmbMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 190, -1));
+
+        lblMetodoPago.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMetodoPago.setText("Metodo de Pago");
+        pnlRealizarVenta.add(lblMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+
+        lblComprobante.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblComprobante.setText("TotalEfectivo");
+        pnlRealizarVenta.add(lblComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
+
+        txtComprobante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pnlRealizarVenta.add(txtComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 180, -1));
 
         javax.swing.GroupLayout pnlBodyLayout = new javax.swing.GroupLayout(pnlBody);
         pnlBody.setLayout(pnlBodyLayout);
         pnlBodyLayout.setHorizontalGroup(
             pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pnlBodyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlRealizarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlBodyLayout.setVerticalGroup(
             pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(pnlBodyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlRealizarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
@@ -61,7 +312,7 @@ public class Ventas extends javax.swing.JFrame {
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBody, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,6 +321,28 @@ public class Ventas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        mnuOpciones.setText("Opciones");
+
+        mnuMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuMenuPrincipal.setText("Menu Principal");
+        mnuMenuPrincipal.addActionListener(this::mnuMenuPrincipalActionPerformed);
+        mnuOpciones.add(mnuMenuPrincipal);
+
+        mnuVentasRealizadas.setText("Ventas Realizadas");
+        mnuOpciones.add(mnuVentasRealizadas);
+
+        mnbOpciones.add(mnuOpciones);
+
+        mnuSalir.setText("Salir");
+        mnuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuSalirMouseClicked(evt);
+            }
+        });
+        mnbOpciones.add(mnuSalir);
+
+        setJMenuBar(mnbOpciones);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,6 +357,49 @@ public class Ventas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
+    private void mnuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuSalirMouseClicked
+        // TODO add your handling code here:
+        Exit e = new Exit();
+        e.salir();
+    }//GEN-LAST:event_mnuSalirMouseClicked
+
+    private void mnuMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMenuPrincipalActionPerformed
+        // TODO add your handling code here:
+        Transitions t = new Transitions();
+        t.ventasToPrincipal(this);
+
+    }//GEN-LAST:event_mnuMenuPrincipalActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        // TODO add your handling code here:
+
+        String metodo = cmbMetodoDePago.getSelectedItem().toString();
+        if (metodo.equals("Efectivo")) {
+            String textoTotal = lblSumaTotal.getText().replace("₡", "").replace(".", "").trim();
+            int total = Integer.parseInt(textoTotal);
+            int pagaCon = Integer.parseInt(txtComprobante.getText().replace(".", "").trim());
+
+            // Confirmación antes de procesar
+            int confirmacion = JOptionPane.showConfirmDialog(this,
+                    "¿Confirma los siguientes datos?\n\n"
+                    + "Total a cobrar: ₡" + String.format("%,d", total).replace(",", ".") + "\n"
+                    + "Cliente paga con: ₡" + String.format("%,d", pagaCon).replace(",", "."),
+                    "Confirmar venta",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                if (pagaCon < total) {
+                    JOptionPane.showMessageDialog(this, "El monto es insuficiente.");
+                } else {
+                    int vuelto = pagaCon - total;
+                    JOptionPane.showMessageDialog(this, "Vuelto: ₡" + String.format("%,d", vuelto).replace(",", "."));
+                }
+            }
+        }
+
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,8 +427,40 @@ public class Ventas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirmar;
+    private javax.swing.JCheckBox ckbCorreo;
+    private javax.swing.JCheckBox ckbTelefono2;
+    private javax.swing.JComboBox<String> cmbMetodoDePago;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblComprobante;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblIconoASADA;
+    private javax.swing.JLabel lblMetodoPago;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblSumaTotal;
+    private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblTelefono2;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblTotalEntradas;
+    private javax.swing.JMenuBar mnbOpciones;
+    private javax.swing.JMenuItem mnuMenuPrincipal;
+    private javax.swing.JMenu mnuOpciones;
+    private javax.swing.JMenu mnuSalir;
+    private javax.swing.JMenuItem mnuVentasRealizadas;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlPrincipal;
+    private javax.swing.JPanel pnlRealizarVenta;
+    private javax.swing.JPanel pnlSumaTotal;
+    private javax.swing.JSpinner spnTotal;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtComprobante;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtTelefono2;
     // End of variables declaration//GEN-END:variables
 }

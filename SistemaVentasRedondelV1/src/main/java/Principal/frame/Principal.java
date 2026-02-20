@@ -4,6 +4,7 @@
  */
 package Principal.frame;
 
+import Transitions.Transitions;
 import functionExit.Exit;
 
 /**
@@ -42,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         mnbOpciones = new javax.swing.JMenuBar();
         mnuOpciones = new javax.swing.JMenu();
         mniRealizarVenta = new javax.swing.JMenuItem();
+        mnuVentasRealizadas = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -149,6 +151,9 @@ public class Principal extends javax.swing.JFrame {
         mniRealizarVenta.addActionListener(this::mniRealizarVentaActionPerformed);
         mnuOpciones.add(mniRealizarVenta);
 
+        mnuVentasRealizadas.setText("Ventas Realizadas");
+        mnuOpciones.add(mnuVentasRealizadas);
+
         mnbOpciones.add(mnuOpciones);
 
         mnuSalir.setText("Salir");
@@ -185,6 +190,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void mniRealizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRealizarVentaActionPerformed
         // TODO add your handling code here:
+                Transitions t = new Transitions();
+        t.principalToVentas(this);
+        
     }//GEN-LAST:event_mniRealizarVentaActionPerformed
 
     /**
@@ -223,6 +231,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniRealizarVenta;
     private javax.swing.JMenu mnuOpciones;
     private javax.swing.JMenu mnuSalir;
+    private javax.swing.JMenuItem mnuVentasRealizadas;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlPrincipal;

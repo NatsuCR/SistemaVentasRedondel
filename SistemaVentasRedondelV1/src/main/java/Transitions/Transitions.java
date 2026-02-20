@@ -8,7 +8,7 @@ package Transitions;
 //Imports
 import Principal.frame.Principal;
 import Login.frame.Login;
-
+import Ventas.frame.Ventas;
 
 /**
  *
@@ -16,7 +16,7 @@ import Login.frame.Login;
  */
 public class Transitions {
     
-    //Pasar como parametro la clase frame y login.dispose();
+    //Ventana inicio a login
     public void runToLogin(){
     
     Login l = new Login();
@@ -25,6 +25,28 @@ public class Transitions {
     l.setVisible(true);
     
     }
+    
+    //Ventana principal a ventas
+    public void principalToVentas(Principal p){
+    
+    Ventas l = new Ventas();
+    
+    l.setLocationRelativeTo(null);
+    l.setVisible(true);
+    
+    p.dispose();
+    }
+    
+    //Ventana principal a ventas
+    public void ventasToPrincipal(Ventas v){
+    
+    Principal l = new Principal();
+    
+    l.setLocationRelativeTo(null);
+    l.setVisible(true);
+    
+    v.dispose();
+    } 
     
     
     
