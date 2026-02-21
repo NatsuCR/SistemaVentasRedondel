@@ -5,7 +5,7 @@
 package Ventas.frame;
 
 import functionExit.Exit;
-import Transitions.Transitions;
+import Transitions.Transition;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeListener;
@@ -15,14 +15,14 @@ import javax.swing.event.ChangeEvent;
  *
  * @author jarav
  */
-public class Ventas extends javax.swing.JFrame {
+public class RealizarVenta extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Ventas.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RealizarVenta.class.getName());
 
     /**
      * Creates new form ventas
      */
-    public Ventas() {
+    public RealizarVenta() {
         initComponents();
 
         // Ocultar al inicio
@@ -149,8 +149,10 @@ public class Ventas extends javax.swing.JFrame {
         txtComprobante = new javax.swing.JTextField();
         mnbOpciones = new javax.swing.JMenuBar();
         mnuOpciones = new javax.swing.JMenu();
-        mnuMenuPrincipal = new javax.swing.JMenuItem();
-        mnuVentasRealizadas = new javax.swing.JMenuItem();
+        mniMenuPrincipal = new javax.swing.JMenuItem();
+        mniRegistrarUsuario = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        mniVentasRealizadas = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -277,18 +279,18 @@ public class Ventas extends javax.swing.JFrame {
 
         cmbMetodoDePago.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cmbMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Sinpe", "Tarjeta" }));
-        pnlRealizarVenta.add(cmbMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 190, -1));
+        pnlRealizarVenta.add(cmbMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 190, -1));
 
         lblMetodoPago.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMetodoPago.setText("Metodo de Pago");
-        pnlRealizarVenta.add(lblMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+        pnlRealizarVenta.add(lblMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 90, -1, -1));
 
         lblComprobante.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblComprobante.setText("TotalEfectivo");
-        pnlRealizarVenta.add(lblComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
+        pnlRealizarVenta.add(lblComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, -1, -1));
 
         txtComprobante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnlRealizarVenta.add(txtComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 180, -1));
+        pnlRealizarVenta.add(txtComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 180, -1));
 
         javax.swing.GroupLayout pnlBodyLayout = new javax.swing.GroupLayout(pnlBody);
         pnlBody.setLayout(pnlBodyLayout);
@@ -324,13 +326,21 @@ public class Ventas extends javax.swing.JFrame {
 
         mnuOpciones.setText("Opciones");
 
-        mnuMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mnuMenuPrincipal.setText("Menu Principal");
-        mnuMenuPrincipal.addActionListener(this::mnuMenuPrincipalActionPerformed);
-        mnuOpciones.add(mnuMenuPrincipal);
+        mniMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniMenuPrincipal.setText("Menu Principal");
+        mniMenuPrincipal.addActionListener(this::mniMenuPrincipalActionPerformed);
+        mnuOpciones.add(mniMenuPrincipal);
 
-        mnuVentasRealizadas.setText("Ventas Realizadas");
-        mnuOpciones.add(mnuVentasRealizadas);
+        mniRegistrarUsuario.setText("Registrar Usuario");
+        mnuOpciones.add(mniRegistrarUsuario);
+
+        jMenuItem1.setText("Ver Detalles de Ventas");
+        mnuOpciones.add(jMenuItem1);
+
+        mniVentasRealizadas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniVentasRealizadas.setText("Ver Ventas Realizadas");
+        mniVentasRealizadas.addActionListener(this::mniVentasRealizadasActionPerformed);
+        mnuOpciones.add(mniVentasRealizadas);
 
         mnbOpciones.add(mnuOpciones);
 
@@ -365,12 +375,12 @@ public class Ventas extends javax.swing.JFrame {
         e.salir();
     }//GEN-LAST:event_mnuSalirMouseClicked
 
-    private void mnuMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMenuPrincipalActionPerformed
+    private void mniMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMenuPrincipalActionPerformed
         // TODO add your handling code here:
-        Transitions t = new Transitions();
+        Transition t = new Transition();
         t.ventasToPrincipal(this);
 
-    }//GEN-LAST:event_mnuMenuPrincipalActionPerformed
+    }//GEN-LAST:event_mniMenuPrincipalActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
@@ -401,6 +411,13 @@ public class Ventas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
+    private void mniVentasRealizadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniVentasRealizadasActionPerformed
+        // TODO add your handling code here:
+                Transition t = new Transition();
+                t.realizarVentasToVentasRealizadas(this);
+        
+    }//GEN-LAST:event_mniVentasRealizadasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -423,7 +440,7 @@ public class Ventas extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Ventas().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new RealizarVenta().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -432,6 +449,7 @@ public class Ventas extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckbTelefono2;
     private javax.swing.JComboBox<String> cmbMetodoDePago;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblComprobante;
@@ -445,10 +463,11 @@ public class Ventas extends javax.swing.JFrame {
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTotalEntradas;
     private javax.swing.JMenuBar mnbOpciones;
-    private javax.swing.JMenuItem mnuMenuPrincipal;
+    private javax.swing.JMenuItem mniMenuPrincipal;
+    private javax.swing.JMenuItem mniRegistrarUsuario;
+    private javax.swing.JMenuItem mniVentasRealizadas;
     private javax.swing.JMenu mnuOpciones;
     private javax.swing.JMenu mnuSalir;
-    private javax.swing.JMenuItem mnuVentasRealizadas;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlPrincipal;

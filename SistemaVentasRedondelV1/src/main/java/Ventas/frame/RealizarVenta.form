@@ -9,7 +9,7 @@
             <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuMenuPrincipal">
+            <MenuItem class="javax.swing.JMenuItem" name="mniMenuPrincipal">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+P"/>
@@ -17,13 +17,29 @@
                 <Property name="text" type="java.lang.String" value="Menu Principal"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuMenuPrincipalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniMenuPrincipalActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuVentasRealizadas">
+            <MenuItem class="javax.swing.JMenuItem" name="mniRegistrarUsuario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ventas Realizadas"/>
+                <Property name="text" type="java.lang.String" value="Registrar Usuario"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver Detalles de Ventas"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mniVentasRealizadas">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+O"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ver Ventas Realizadas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniVentasRealizadasActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -460,7 +476,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="570" y="110" width="190" height="-1"/>
+                      <AbsoluteConstraints x="620" y="110" width="190" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -473,7 +489,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="610" y="90" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="660" y="90" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -486,7 +502,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="620" y="150" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="670" y="150" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -498,7 +514,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="580" y="180" width="180" height="-1"/>
+                      <AbsoluteConstraints x="630" y="180" width="180" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>

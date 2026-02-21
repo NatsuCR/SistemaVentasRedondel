@@ -5,7 +5,7 @@
 package Login.frame;
 
 //Imports
-import Transitions.Transitions;
+import Transitions.Transition;
 import functionExit.Exit;
 /**
  *
@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
-        Transitions t = new Transitions();
+        Transition t = new Transition();
         t.loginToPrincipal(this);
     }//GEN-LAST:event_btnIniciarActionPerformed
 

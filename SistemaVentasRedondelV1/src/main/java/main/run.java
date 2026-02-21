@@ -4,7 +4,7 @@
  */
 package main;
 
-import Transitions.Transitions;
+import Transitions.Transition;
 
 /**
  *
@@ -13,7 +13,7 @@ import Transitions.Transitions;
 public class run {
     
     public static void main(String[] args) {
-        Transitions t = new Transitions();
+        Transition t = new Transition();
         t.runToLogin();
     }
     

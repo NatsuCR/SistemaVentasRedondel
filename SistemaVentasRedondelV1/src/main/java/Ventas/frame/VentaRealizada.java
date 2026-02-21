@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Principal.frame;
+package Ventas.frame;
 
 import Transitions.Transition;
 import functionExit.Exit;
@@ -11,14 +11,14 @@ import functionExit.Exit;
  *
  * @author jarav
  */
-public class Principal extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
+public class VentaRealizada extends javax.swing.JFrame {
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentaRealizada.class.getName());
 
     /**
-     * Creates new form Principal
+     * Creates new form VentasRealizadas
      */
-    public Principal() {
+    public VentaRealizada() {
         initComponents();
     }
 
@@ -34,87 +34,63 @@ public class Principal extends javax.swing.JFrame {
         pnlPrincipal = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblIconoASADA = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
-        lblCedula = new javax.swing.JLabel();
         pnlBody = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        pnlOpciones = new javax.swing.JPanel();
+        btnExportarDatos = new javax.swing.JButton();
+        pnlTabla = new javax.swing.JPanel();
+        splTablaRegistro = new javax.swing.JScrollPane();
+        tablaDeVentas = new javax.swing.JTable();
         mnbOpciones = new javax.swing.JMenuBar();
         mnuOpciones = new javax.swing.JMenu();
+        mniMenuPrincipal = new javax.swing.JMenuItem();
         mniRegistrarUsuario = new javax.swing.JMenuItem();
         mniRealizarVenta = new javax.swing.JMenuItem();
-        mniDetallesVenta = new javax.swing.JMenuItem();
-        mnuVentaRealizada = new javax.swing.JMenuItem();
-        mniUsuarioRegistrado = new javax.swing.JMenuItem();
+        mniDetallesVentas = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Bienvenido al sistema de ventas de boleterías del redondel Muelle, San Carlos");
-
-        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblUsuario.setText("-usuario-");
-
-        lblCedula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCedula.setText("-cedula-");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Registro de ventas");
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
         pnlHeaderLayout.setHorizontalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHeaderLayout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
-                .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHeaderLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(151, 151, 151)
-                        .addComponent(lblIconoASADA)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHeaderLayout.createSequentialGroup()
-                        .addComponent(lblUsuario)
-                        .addGap(115, 115, 115)
-                        .addComponent(lblCedula)
-                        .addGap(361, 361, 361))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHeaderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(441, 441, 441))
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHeaderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblIconoASADA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuario)
-                    .addComponent(lblCedula))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Ventas realizadas");
+        btnExportarDatos.setText("Exportar Datos");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(398, 398, 398))
+        javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);
+        pnlOpciones.setLayout(pnlOpcionesLayout);
+        pnlOpcionesLayout.setHorizontalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOpcionesLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(btnExportarDatos)
+                .addGap(22, 22, 22))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
+        pnlOpcionesLayout.setVerticalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(btnExportarDatos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDeVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -125,7 +101,23 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        splTablaRegistro.setViewportView(tablaDeVentas);
+
+        javax.swing.GroupLayout pnlTablaLayout = new javax.swing.GroupLayout(pnlTabla);
+        pnlTabla.setLayout(pnlTablaLayout);
+        pnlTablaLayout.setHorizontalGroup(
+            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(splTablaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlTablaLayout.setVerticalGroup(
+            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(splTablaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pnlBodyLayout = new javax.swing.GroupLayout(pnlBody);
         pnlBody.setLayout(pnlBodyLayout);
@@ -133,16 +125,19 @@ public class Principal extends javax.swing.JFrame {
             pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBodyLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlBodyLayout.setVerticalGroup(
             pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBodyLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(pnlBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
@@ -162,8 +157,12 @@ public class Principal extends javax.swing.JFrame {
 
         mnuOpciones.setText("Opciones");
 
-        mniRegistrarUsuario.setText("Registrar Usuarios");
-        mniRegistrarUsuario.addActionListener(this::mniRegistrarUsuarioActionPerformed);
+        mniMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniMenuPrincipal.setText("Menu Principal");
+        mniMenuPrincipal.addActionListener(this::mniMenuPrincipalActionPerformed);
+        mnuOpciones.add(mniMenuPrincipal);
+
+        mniRegistrarUsuario.setText("Registra Usuarios");
         mnuOpciones.add(mniRegistrarUsuario);
 
         mniRealizarVenta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -171,18 +170,13 @@ public class Principal extends javax.swing.JFrame {
         mniRealizarVenta.addActionListener(this::mniRealizarVentaActionPerformed);
         mnuOpciones.add(mniRealizarVenta);
 
-        mniDetallesVenta.setText("Ver Detalles de Ventas");
-        mniDetallesVenta.addActionListener(this::mniDetallesVentaActionPerformed);
-        mnuOpciones.add(mniDetallesVenta);
+        mniDetallesVentas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniDetallesVentas.setText("Ver Detalles de Ventas");
+        mniDetallesVentas.addActionListener(this::mniDetallesVentasActionPerformed);
+        mnuOpciones.add(mniDetallesVentas);
 
-        mnuVentaRealizada.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mnuVentaRealizada.setText("Ver Ventas Realizadas");
-        mnuVentaRealizada.addActionListener(this::mnuVentaRealizadaActionPerformed);
-        mnuOpciones.add(mnuVentaRealizada);
-
-        mniUsuarioRegistrado.setText("Ver Usuarios Registrados");
-        mniUsuarioRegistrado.addActionListener(this::mniUsuarioRegistradoActionPerformed);
-        mnuOpciones.add(mniUsuarioRegistrado);
+        jMenuItem1.setText("Ver Usuarios Registrados");
+        mnuOpciones.add(jMenuItem1);
 
         mnbOpciones.add(mnuOpciones);
 
@@ -210,45 +204,31 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuSalirMouseClicked
+    private void mniMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMenuPrincipalActionPerformed
         // TODO add your handling code here:
-        
-        Exit e = new Exit();
-        e.salir();
-        
-    }//GEN-LAST:event_mnuSalirMouseClicked
+        Transition t = new Transition();
+        t.ventasRealizadasToPrincipal(this);
+    }//GEN-LAST:event_mniMenuPrincipalActionPerformed
 
     private void mniRealizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRealizarVentaActionPerformed
         // TODO add your handling code here:
         Transition t = new Transition();
-        t.principalToVentas(this);
-        
+        t.ventasRealizadasToRealizarVenta(this);
+
     }//GEN-LAST:event_mniRealizarVentaActionPerformed
 
-    private void mnuVentaRealizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVentaRealizadaActionPerformed
+    private void mnuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuSalirMouseClicked
+        // TODO add your handling code here:
+
+        Exit e = new Exit();
+        e.salir();
+    }//GEN-LAST:event_mnuSalirMouseClicked
+
+    private void mniDetallesVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDetallesVentasActionPerformed
         // TODO add your handling code here:
         Transition t = new Transition();
-        t.principalToVentasRealizadas(this);
-        
-    }//GEN-LAST:event_mnuVentaRealizadaActionPerformed
-
-    private void mniRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRegistrarUsuarioActionPerformed
-        // TODO add your handling code here:
-                Transition t = new Transition();
-        t.principalToRegistrarUsuario(this);
-    }//GEN-LAST:event_mniRegistrarUsuarioActionPerformed
-
-    private void mniUsuarioRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUsuarioRegistradoActionPerformed
-        // TODO add your handling code here:
-                        Transition t = new Transition();
-        t.principalToTrabajadorRegistrado(this);
-    }//GEN-LAST:event_mniUsuarioRegistradoActionPerformed
-
-    private void mniDetallesVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDetallesVentaActionPerformed
-        // TODO add your handling code here:
-                        Transition t = new Transition();
-        t.principalToDetalleVenta(this);
-    }//GEN-LAST:event_mniDetallesVentaActionPerformed
+        t.ventasRealizadasToDetallesVentas(this);
+    }//GEN-LAST:event_mniDetallesVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,28 +252,26 @@ public class Principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new VentaRealizada().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExportarDatos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblCedula;
-    private javax.swing.JLabel lblIconoASADA;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar mnbOpciones;
-    private javax.swing.JMenuItem mniDetallesVenta;
+    private javax.swing.JMenuItem mniDetallesVentas;
+    private javax.swing.JMenuItem mniMenuPrincipal;
     private javax.swing.JMenuItem mniRealizarVenta;
     private javax.swing.JMenuItem mniRegistrarUsuario;
-    private javax.swing.JMenuItem mniUsuarioRegistrado;
     private javax.swing.JMenu mnuOpciones;
     private javax.swing.JMenu mnuSalir;
-    private javax.swing.JMenuItem mnuVentaRealizada;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlOpciones;
     private javax.swing.JPanel pnlPrincipal;
+    private javax.swing.JPanel pnlTabla;
+    private javax.swing.JScrollPane splTablaRegistro;
+    private javax.swing.JTable tablaDeVentas;
     // End of variables declaration//GEN-END:variables
 }
